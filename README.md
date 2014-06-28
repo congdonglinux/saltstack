@@ -44,7 +44,8 @@ Hostname	| minion2
 **eth1**			| Internet Access
 **OS**				| CentOS 6.5 X86_64
 
-* Cài đặt saltmaster
+### 4.2 Cài đặt saltmaster
+----------------
 ```shell
 apt-get update && apt-get upgrade -y
 apt-get install python-software-properties -y
