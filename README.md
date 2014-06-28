@@ -43,13 +43,14 @@ Hostname	| minion2
 **eth1**			| Internet Access
 **OS**				| CentOS 6.5 X86_64
 
-
-Cài đặt saltmaster
+	* Cài đặt saltmaster
+```shell
 apt-get update && apt-get upgrade -y
 apt-get install python-software-properties -y
 add-apt-repository ppa:saltstack/salt -y
 apt-get update
 apt-get install salt-master -y
+```
 
 Cấu hình Saltmaster
 /etc/salt/master
