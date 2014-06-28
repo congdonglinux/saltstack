@@ -23,7 +23,7 @@ Cá nhân mình đã thử tìm hiểu qua puppet và saltstack, và cuối cùn
 j/k: Thường thì người ta hay đặt master và slave. Tác giả viết nên cái này chắc cũng ghiền phim Despicable Me nên đặt là minion  :v
 
 # 4. Các bước cài đặt ?
-## 4.1 Mô hình LAB
+### 4.1 Mô hình LAB
 
 
 Server	|saltmaster
