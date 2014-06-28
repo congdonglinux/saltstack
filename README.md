@@ -13,6 +13,8 @@ Saltstack có 2 thành phần
 - Salt Master: quản lý cấu hình. Bạn chỉnh sửa cấu hình trên này (1 lần duy nhất), chính Salt Master sẽ 'ra lệnh' cho các server làm việc ^^
 - Salt Minion: 'nhận lệnh' từ Salt Master và thực thi 'lệnh' dựa vào cấu hình tương ứng.
 
+j/k: Thường thì người ta hay đặt master và slave. Tác giả viết nên cái này chắc cũng ghiền phim Despicable Me nên đặt là minion  :v
+
 Điểm đặc biệt là mỗi Salt Minion sẽ có những cấu hình khác nhau, do đó sẽ thực hiện những công việc khác nhau.
 ể
 Ví dụ: Mô hình có 3 server:
@@ -45,3 +47,26 @@ Hostname: minion2
 eth0: 10.20.0.151
 eth1: Internet Access
 OS: CentOS 6.5 X86_64
+
+
+Cài đặt saltmaster
+apt-get update && apt-get upgrade -y
+apt-get install python-software-properties -y
+add-apt-repository ppa:saltstack/salt -y
+apt-get update
+apt-get install salt-master -y
+
+Cấu hình Saltmaster
+/etc/salt/master
+
+# saltmaster sẽ listen trên tất cả các IP
+interface: 0.0.0.0
+
+# Saltmaster sẽ đọc các file cấu hình ở /srv/salt
+file_roots:
+  base:
+    - /srv/salt
+
+Restart lại Saltmaster
+/etc/init.d/salt-master restart
+
