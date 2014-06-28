@@ -29,8 +29,9 @@ ServC cài đặt PHP và MySQL.
 Nói dông dài thế đủ rồi. Bây giờ bắt tay vào cài đặt.
 
 Mô hình LAB có 3 server
-Server 1:
-| Hostname  | saltmaster
+##### Server 1:
+:Hostname:saltmaster
+
 | eth0      | 10.20.0.100
 | eth1      | Internet Access (để tải gói về cài đặt)
 | OS        | Ubuntu 14.04 amd64
