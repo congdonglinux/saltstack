@@ -52,8 +52,7 @@ apt-get update
 apt-get install salt-master -y
 ```
 
-* Cấu hình Saltmaster
-/etc/salt/master
+* Cấu hình Saltmaster: **/etc/salt/master**
 ```shell
 # saltmaster sẽ listen trên tất cả các IP
 interface: 0.0.0.0
@@ -69,22 +68,26 @@ file_roots:
 /etc/init.d/salt-master restart
 ```
 
-Cài đặt Salt Minion
-Minion 1
+* Cài đặt Salt Minion
+*Minion 1*
+```shell
 apt-get install salt-minion -y
-
-Minion 2
+```
+*Minion 2*
+```shell
 rpm -Uvh http://ftp.linux.ncsu.edu/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 yum install salt-minion -y
+```
 
-Cấu hình:
-/etc/salt/minion
+* Cấu hình: **/etc/salt/minion**
+```shell
 # Chỉ cho minion biết phải đi đâu để nhận 'nhiệm vụ' 
 master: 10.20.0.100
-
-Restart Minion
+```
+* Restart Minion
+```shell
 /etc/init.d/salt-minion restart
-
+```
 Kiểm tra quá trình cài đặt
 Trên Master
 salt-key -L
