@@ -111,6 +111,7 @@ Kết quả trên có thể hiểu như thế này: Mới có 2 thằng Minion g
 salt-key -A
 ```
 *(Nó có hỏi gì thì chọn Y hết nha bà con)*
+
 **Kiểm tra lại phát**
 ```shell
 salt-key -L
@@ -124,6 +125,7 @@ Rejected Keys:
 ```
 
 **Kiểm tra xem Master mà Minion đã 'thông' chưa**
+
 *Trên master gõ lệnh*
 ```shell
 salt '*' test.ping
