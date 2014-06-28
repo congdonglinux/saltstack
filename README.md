@@ -31,7 +31,13 @@ Nói dông dài thế đủ rồi. Bây giờ bắt tay vào cài đặt.
 Mô hình LAB có 3 server
 ##### Server 1:
 :Hostname:saltmaster
+=================================================== =======================================================
 
+ Houssem Medhioub <houssem.medhioub@it-sudparis.eu> Djamal Zeghlache <djamal.zeghlache@telecom-sudparis.eu>
+
+  Sam Stoelinga <sammiestoel@gmail.com>
+
+=================================================== =======================================================
 | eth0      | 10.20.0.100
 | eth1      | Internet Access (để tải gói về cài đặt)
 | OS        | Ubuntu 14.04 amd64
