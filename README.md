@@ -32,13 +32,12 @@ Mô hình LAB có 3 server
 ##### Server 1:
 Hostname|saltmaster
 --------|---------
-eth0    |10.20.0.100
-eth1    | Internet Access (để tải gói về cài đặt)
-OS      | Ubuntu 14.04 amd64
+**eth0**    |10.20.0.100
+**eth1**    | Internet Access (để tải gói về cài đặt)
+**OS**      | Ubuntu 14.04 amd64
 
-Server 2|
+Server  | minion1
 --------|-------------
-**Hostname**	| minion1
 **eth0**			| 10.20.0.150
 **eth1**			| Internet Access
 **OS**				| Ubuntu 12.04 amd64
