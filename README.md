@@ -1,35 +1,31 @@
 Hướng dẫn cài đặt saltstack
 =========
 
-# 1. What's Saltstack? 
-Saltstack là 1 phần mềm quản lý cấu hình. Nói đơn giản là 1 phần mềm giúp bạn chỉnh sửa file cấu hình trên 1 máy và áp dụng file cấu hình này trên hàng loạt máy. Ngoài quản lý cấu hình thì saltstack còn quản lý cron/file/folders/service... rất nhiều thứ hay ho.
+# 1. Nhu cầu ?
+Khi triển khai Openstack thì khi bạn phải setup 1 hệ thống hàng chục (thậm chí hàng trăm server) trong đó có 1 (hoặc 1 vài) Controller và số còn lại là Compute Node. Cách truyền thống là bạn lên từng node gõ lóc cóc từng lệnh và cứ thế làm từng server 1. 'Pro' hơn chút nữa thì bạn viết 1 script (mình hay dùng bash shell) để chạy tự động từ đầu tới cuối, cách này nhanh hơn cách đầu nhưng bạn vẫn phải copy script lên từng server và gõ từ lệnh. Và sau này khi trong quá trình hoạt động, bạn cần update 1 vài cấu hình nhỏ trong file nova.conf thì bạn phải lên từng Compute và sửa, công việc nhàm chán. Trường hợp này bạn có thể sử dụng saltstack (puppet/chef hoặc bất cứ phần mềm quản lý cấu hình nào đó), bạn chỉ ngồi 1 chỗ gõ command 'ra lệnh' cho các server phải cài đặt những gói này, cài dịch vụ này trước rồi tới dịch vụ kia, đảm bảo các dịch vụ sẽ khởi động cùng OS khi server bị reset. Và trường hợp bạn chỉnh sửa 1 vài cấu hình thì sau khi chỉnh sửa bạn lại 'ra lệnh' cho các server lên 'kéo' các file tương ứng về và restart lại dịch vụ, tất cả đều tự động. Rất khỏe :))
 
-# 2. Why's Saltstack?
-Áp dụng vào việc triển khai Openstack thì khi bạn phải setup 1 hệ thống hàng chục (thậm chí hàng trăm server) trong đó có 1 (hoặc 1 vài) Controller và số còn lại là Compute Node. Cách truyền thống là bạn lên từng node gõ lóc cóc từng lệnh và cứ thế làm từng server 1. Tiên tiến hơn chút thì bạn viết 1 script (mình thích bash shell) để chạy tự động từ đầu tới cuối, cách này nhanh hơn rất nhiều cách đầu nhưng bạn vẫn phải copy script lên từng server và gõ từ lệnh. Và sau này khi trong quá trình hoạt động, bạn cần update 1 vài cấu hình nhỏ trong file nova.conf thì bạn phải lên từng Compute và sửa, công việc nhàm chán. Trường hợp này bạn có thể sử dụng saltstack, bạn chỉ ngồi 1 chỗ gõ command 'ra lệnh' cho các server phải cài đặt những gói này, cài dịch vụ này trước rồi tới dịch vụ kia, đảm bảo các dịch vụ running. Và khi bạn chỉnh sửa 1 vài cấu hình thì sau khi chỉnh sửa bạn lại 'ra lệnh' cho các server lên 'kéo' các file tương ứng về và restart lại dịch vụ, tất cả đều tự động. Rất khỏe :))
+Thêm 1 điểm đáng cộng nữa khi sử dụng hệ thống quản lý cấu hình là người quản trị ko cần quan tâm các Server cài đặt Distro gì, phiên bản bao nhiêu, kiến trúc nào. Bạn chỉ cần ra lệnh kiểu như:
+- Thằng A mày cài cho tao Apache
+- Thằng B mày cài cho tao PHP + MySQL
+- .....
 
-Saltstack có 2 thành phần
+# 2. Tại sao chọn Saltstack?
+Trên Internet hiện nay có nhiều phần mềm quản lý cấu hình tập trung như puppet/chef/saltstack... Mỗi phần mềm có những thành phần, ưu nhược điểm và có 1 cộng đồng người dùng riêng. Trong đó đông đảo nhất là puppet. Số lượng người sử dụng puppet đông đảo ko hẳn là vì puppet hơn hẳn những thằng còn lại mà 1 phần vì nó ra lâu rồi.
+Cá nhân mình đã thử tìm hiểu qua puppet và saltstack, và cuối cùng mình chọn saltstack vì 1 số  lí do sau:
+- Miễn phí : puppet cũng có bản miễn phí (community) nhưng bản có 1 hạn chế mà mình ko thích là các máy slave phải định kỳ contact master để 'kéo' các cấu hình mới về. Việc này có thể làm được thông qua cấu hình cronjob nhưng có đôi lúc mình chỉnh sửa mà muốn áp ngay thì ko được. Còn riêng saltstack thì khi chỉnh sửa cấu hình xong, bạn ngồi tại Master 'đẩy' cấu hình tương ứng về cho từng Slave (minion)
+- Kiến trúc đơn giản: cá nhân mình thấy saltstack tổ chức 'cây cấu hình' đơn giản, dễ hiểu hơn puppet (hoặc do mình dốt quá nên cảm thấy khó hiểu)
+- Còn nhiều nữa mà mình chưa nghĩ ra, khi nào nghĩ ra mình cập nhật sau vậy ;))
+
+# 3. Thành phần của Saltstack
 - Salt Master: quản lý cấu hình. Bạn chỉnh sửa cấu hình trên này (1 lần duy nhất), chính Salt Master sẽ 'ra lệnh' cho các server làm việc ^^
 - Salt Minion: 'nhận lệnh' từ Salt Master và thực thi 'lệnh' dựa vào cấu hình tương ứng.
 
 j/k: Thường thì người ta hay đặt master và slave. Tác giả viết nên cái này chắc cũng ghiền phim Despicable Me nên đặt là minion  :v
 
-Điểm đặc biệt là mỗi Salt Minion sẽ có những cấu hình khác nhau, do đó sẽ thực hiện những công việc khác nhau.
-ể
-Ví dụ: Mô hình có 3 server:
-SvrA: Saltmaster
-SvrB + SvrC: SaltMinion
-
-Người quản trị có th cấu hình cho SvrB cài đặt Apache trong khi SvrC cài đặt mysql + php.
-
-Thêm 1 điểm đáng lưu ý nữa là người quản trị ko cần quan tâm các Minion đang cài đặt Distro nào, phiên bản bao nhiêu. Bạn chỉ cần ra lệnh kiểu như:
-ServB cài đặt Apache HTTP Server và đảm bảo dịch vụ này running
-ServC cài đặt PHP và MySQL.
-
-# 3. How's Saltstack?
-Nói dông dài thế đủ rồi. Bây giờ bắt tay vào cài đặt.
-
+# 4. Các bước cài đặt ?
 Mô hình LAB có 3 server
-Server|saltmaster
+
+Server	|saltmaster
 --------|---------
 **eth0**    |10.20.0.100
 **eth1**    | Internet Access (để tải gói về cài đặt)
