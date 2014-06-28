@@ -29,8 +29,7 @@ ServC cài đặt PHP và MySQL.
 Nói dông dài thế đủ rồi. Bây giờ bắt tay vào cài đặt.
 
 Mô hình LAB có 3 server
-##### Server 1:
-Hostname|saltmaster
+Server|saltmaster
 --------|---------
 **eth0**    |10.20.0.100
 **eth1**    | Internet Access (để tải gói về cài đặt)
@@ -42,11 +41,11 @@ Server  | minion1
 **eth1**			| Internet Access
 **OS**				| Ubuntu 12.04 amd64
 
-Server 3:
-Hostname: minion2
-eth0: 10.20.0.151
-eth1: Internet Access
-OS: CentOS 6.5 X86_64
+Hostname	| minion2
+----------|--------
+**eth0**			| 10.20.0.151
+**eth1**			| Internet Access
+**OS**				| CentOS 6.5 X86_64
 
 
 Cài đặt saltmaster
