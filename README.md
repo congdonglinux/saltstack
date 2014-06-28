@@ -24,7 +24,7 @@ j/k: Thường thì người ta hay đặt master và slave. Tác giả viết n
 
 # 4. Các bước cài đặt ?
 ### 4.1 Mô hình LAB
-
+----------------
 
 Server	|saltmaster
 --------|---------
