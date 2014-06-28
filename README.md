@@ -23,7 +23,8 @@ Cá nhân mình đã thử tìm hiểu qua puppet và saltstack, và cuối cùn
 j/k: Thường thì người ta hay đặt master và slave. Tác giả viết nên cái này chắc cũng ghiền phim Despicable Me nên đặt là minion  :v
 
 # 4. Các bước cài đặt ?
-Mô hình LAB có 3 server
+	4.1 Mô hình LAB
+
 
 Server	|saltmaster
 --------|---------
@@ -69,11 +70,11 @@ file_roots:
 ```
 
 * Cài đặt Salt Minion
-*Minion 1*
+**Minion 1**
 ```shell
 apt-get install salt-minion -y
 ```
-*Minion 2*
+**Minion 2**
 ```shell
 rpm -Uvh http://ftp.linux.ncsu.edu/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 yum install salt-minion -y
