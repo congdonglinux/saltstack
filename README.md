@@ -2,7 +2,7 @@
 =========
 
 # 1. Nhu cầu ?
-Khi triển khai Openstack thì khi bạn phải setup 1 hệ thống hàng chục (thậm chí hàng trăm server) trong đó có 1 (hoặc 1 vài) Controller và số còn lại là Compute Node. Cách truyền thống là bạn lên từng node gõ lóc cóc từng lệnh và cứ thế làm từng server 1. 'Pro' hơn chút nữa thì bạn viết 1 script (mình hay dùng bash shell) để chạy tự động từ đầu tới cuối, cách này nhanh hơn cách đầu nhưng bạn vẫn phải copy script lên từng server và gõ từ lệnh. Và sau này khi trong quá trình hoạt động, bạn cần update 1 vài cấu hình nhỏ trong file nova.conf thì bạn phải lên từng Compute và sửa, công việc nhàm chán. Trường hợp này bạn có thể sử dụng saltstack (puppet/chef hoặc bất cứ phần mềm quản lý cấu hình nào đó), bạn chỉ ngồi 1 chỗ gõ command 'ra lệnh' cho các server phải cài đặt những gói này, cài dịch vụ này trước rồi tới dịch vụ kia, đảm bảo các dịch vụ sẽ khởi động cùng OS khi server bị reset. Và trường hợp bạn chỉnh sửa 1 vài cấu hình thì sau khi chỉnh sửa bạn lại 'ra lệnh' cho các server lên 'kéo' các file tương ứng về và restart lại dịch vụ, tất cả đều tự động. Rất khỏe :))
+Khi triển khai Openstack thì khi bạn phải setup 1 hệ thống hàng chục (thậm chí hàng trăm server) trong đó có 1 (hoặc 1 vài) Controller và số còn lại là Compute Node. Cách truyền thống là bạn lên từng node gõ lóc cóc từng lệnh và cứ thế làm từng server 1. 'Pro' hơn chút nữa thì bạn viết 1 script (mình hay dùng bash shell) để chạy tự động từ đầu tới cuối, cách này nhanh hơn cách đầu nhưng bạn vẫn phải copy script lên từng server và gõ lệnh thực thi script đó. Sau này khi trong quá trình hoạt động, bạn cần update 1 vài cấu hình nhỏ (Ví dụ nova.conf) thì bạn phải lên từng Compute Node và sửa, công việc nhàm cmn chán. Trường hợp này bạn có thể sử dụng saltstack (puppet/chef hoặc bất cứ phần mềm quản lý cấu hình nào đó), bạn chỉ ngồi 1 chỗ gõ command 'ra lệnh' cho các server phải cài đặt những gói này, cài dịch vụ này trước rồi tới dịch vụ kia, đảm bảo các dịch vụ sẽ khởi động cùng OS khi server bị reset. Và trường hợp bạn chỉnh sửa 1 vài cấu hình thì sau khi chỉnh sửa bạn lại 'ra lệnh' cho các server lên 'kéo' các file tương ứng về và restart lại dịch vụ, tất cả đều tự động. Rất khỏe :))
 
 Thêm 1 điểm đáng cộng nữa khi sử dụng hệ thống quản lý cấu hình là người quản trị ko cần quan tâm các Server cài đặt Distro gì, phiên bản bao nhiêu, kiến trúc nào. Bạn chỉ cần ra lệnh kiểu như:
 - Thằng A mày cài cho tao Apache
@@ -10,7 +10,8 @@ Thêm 1 điểm đáng cộng nữa khi sử dụng hệ thống quản lý cấ
 - .....
 
 # 2. Tại sao chọn Saltstack?
-Trên Internet hiện nay có nhiều phần mềm quản lý cấu hình tập trung như puppet/chef/saltstack... Mỗi phần mềm có những thành phần, ưu nhược điểm và có 1 cộng đồng người dùng riêng. Trong đó đông đảo nhất là puppet. Số lượng người sử dụng puppet đông đảo ko hẳn là vì puppet hơn hẳn những thằng còn lại mà 1 phần vì nó ra lâu rồi.
+Trên Internet hiện nay có nhiều phần mềm quản lý cấu hình tập trung như puppet/chef/saltstack... Mỗi phần mềm có những thành phần, ưu nhược điểm và có cộng đồng người dùng riêng. Trong đó đông đảo nhất là puppet. Số lượng người sử dụng puppet đông đảo ko hẳn là vì puppet hơn hẳn những thằng còn lại mà 1 phần vì nó ra lâu rồi.
+
 Cá nhân mình đã thử tìm hiểu qua puppet và saltstack, và cuối cùng mình chọn saltstack vì 1 số  lí do sau:
 - Miễn phí : puppet cũng có bản miễn phí (community) nhưng bản có 1 hạn chế mà mình ko thích là các máy slave phải định kỳ contact master để 'kéo' các cấu hình mới về. Việc này có thể làm được thông qua cấu hình cronjob nhưng có đôi lúc mình chỉnh sửa mà muốn áp ngay thì ko được. Còn riêng saltstack thì khi chỉnh sửa cấu hình xong, bạn ngồi tại Master 'đẩy' cấu hình tương ứng về cho từng Slave (minion)
 - Kiến trúc đơn giản: cá nhân mình thấy saltstack tổ chức 'cây cấu hình' đơn giản, dễ hiểu hơn puppet (hoặc do mình dốt quá nên cảm thấy khó hiểu)
@@ -20,7 +21,7 @@ Cá nhân mình đã thử tìm hiểu qua puppet và saltstack, và cuối cùn
 - **Salt Master:** quản lý cấu hình. Bạn chỉnh sửa cấu hình trên này (1 lần duy nhất), chính Salt Master sẽ 'ra lệnh' cho các server làm việc ^^
 - **Salt Minion:** 'nhận lệnh' từ Salt Master và thực thi 'lệnh' dựa vào cấu hình tương ứng.
 
-**j/k:** Thường thì người ta hay đặt master và slave. Tác giả viết nên cái này chắc cũng ghiền phim Despicable Me nên đặt là minion  :v
+**j/k:** Thường thì người ta hay đặt master và slave. Bác lập trình viên viết Saltstack chắc cũng ghiền phim Despicable Me nên đặt là minion :v
 
 # 4. Các bước cài đặt ?
 ### 4.1 Mô hình LAB
