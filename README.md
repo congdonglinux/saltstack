@@ -92,7 +92,7 @@ master: 10.20.0.100
 ```
 ### 4.3 Kiểm tra quá trình cài đặt
 ----------------
-*Trên Master*
+**Trên Master**
 ```shell
 salt-key -L
 ```
@@ -107,31 +107,43 @@ Rejected Keys:
 
 Key này được Master sử dụng để chứng thực các minion (còn có sử dụng để mã hóa dữ liệu qua lại giữa 2 thằng này ko thì ko sure lắm)
 Kết quả trên có thể hiểu như thế này: Mới có 2 thằng Minion gởi key lên và đang chờ accept, bây giờ mày có muốn accept hay ko? Ờ, Accept thôi
+```shell
 salt-key -A
-(Nó có hỏi gì thì chọn Y hết nha bà con)
-Kiểm tra lại phát
+```
+*(Nó có hỏi gì thì chọn Y hết nha bà con)*
+**Kiểm tra lại phát**
+```shell
 salt-key -L
+```
+```shell
 Accepted Keys:
 minion1
 minion2
 Unaccepted Keys:
 Rejected Keys:
+```
 
-Kiểm tra xem Master mà Minion đã 'thông' chưa
-Trên master gõ lệnh
+**Kiểm tra xem Master mà Minion đã 'thông' chưa**
+*Trên master gõ lệnh*
+```shell
 salt '*' test.ping
+```
+```shell
 minion2:
     True
 minion1:
     True
-
-# Lấy thông tin về 'Dòng họ' OS các minion đang xài
+```
+**Lấy thông tin về 'Dòng họ' OS các minion đang xài**
+```shell
 salt '*' grains.item os_family
+```
+```shell
 minion2:
   os_family: RedHat
 minion1:
   os_family: Debian
-
+```
 
 Mình xin kết thúc bài này tại đây. Bài này chỉ với 1 mục đích duy nhất là giúp các bạn cài đặt được Salt-Master và Salt-Minion. Ngoài ra còn có 1 vài cấu hình cơ bản để Master và Minion liên lạc được với nhau.
 
