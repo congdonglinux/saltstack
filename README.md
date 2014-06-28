@@ -52,9 +52,9 @@ apt-get update
 apt-get install salt-master -y
 ```
 
-Cấu hình Saltmaster
+* Cấu hình Saltmaster
 /etc/salt/master
-
+```shell
 # saltmaster sẽ listen trên tất cả các IP
 interface: 0.0.0.0
 
@@ -62,10 +62,12 @@ interface: 0.0.0.0
 file_roots:
   base:
     - /srv/salt
+```
 
-Restart lại Saltmaster
+* Restart lại Saltmaster
+```base 
 /etc/init.d/salt-master restart
-
+```
 
 Cài đặt Salt Minion
 Minion 1
