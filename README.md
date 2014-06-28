@@ -149,4 +149,4 @@ minion1:
 
 Mình xin kết thúc bài này tại đây. Bài này chỉ với 1 mục đích duy nhất là giúp các bạn cài đặt được Salt-Master và Salt-Minion. Ngoài ra còn có 1 vài cấu hình cơ bản để Master và Minion liên lạc được với nhau.
 
-Trong bài viết có 1 số command mình chưa giải thích rõ ràng vì để giải thích rõ ràng thì mình cần tìm hiểu thêm. Có ý kiến gì cần trao đổi các bạn có thể vào FB: https://www.facebook.com/cucxabong
+Trong bài viết có 1 số command mình chưa giải thích rõ ràng vì 1 là bản thân mình cũng chưa tìm hiểu kỹ về saltstack (mới tìm hiểu có 1 tuần :(), 2 là để các bạn tự nghiên cứu ;)). Nếu có gì cần trao đổi các bạn có thể vào FB: https://www.facebook.com/cucxabong
