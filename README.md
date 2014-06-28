@@ -1,4 +1,4 @@
-Hướng dẫn cài đặt saltstack
+![Hướng dẫn cài đặt saltstack](http://static.squarespace.com/static/524cf70fe4b05018590c3fb3/t/52718a36e4b079ec23e2c895/1383172756774/SaltStack%20logo%20-%20black%20on%20white.png)
 =========
 
 # 1. Nhu cầu ?
