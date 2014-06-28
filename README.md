@@ -69,7 +69,8 @@ file_roots:
 ```base 
 /etc/init.d/salt-master restart
 ```
-### 4.2 Cài đặt Salt Minion
+### 4.3 Cài đặt Salt Minion
+----------------
 **Minion 1**
 ```shell
 apt-get install salt-minion -y
@@ -89,16 +90,20 @@ master: 10.20.0.100
 ```shell
 /etc/init.d/salt-minion restart
 ```
-Kiểm tra quá trình cài đặt
-Trên Master
+### 4.3 Kiểm tra quá trình cài đặt
+----------------
+*Trên Master*
+```shell
 salt-key -L
-
-Nếu thấy kết quả như vầy thì minion đã gởi public key tới cho Master
+```
+**Nếu thấy kết quả như vầy thì minion đã gởi public key tới cho Master**
+```shell
 Accepted Keys:
 Unaccepted Keys:
 minion1
 minion2
 Rejected Keys:
+```
 
 Key này được Master sử dụng để chứng thực các minion (còn có sử dụng để mã hóa dữ liệu qua lại giữa 2 thằng này ko thì ko sure lắm)
 Kết quả trên có thể hiểu như thế này: Mới có 2 thằng Minion gởi key lên và đang chờ accept, bây giờ mày có muốn accept hay ko? Ờ, Accept thôi
