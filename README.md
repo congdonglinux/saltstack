@@ -1,7 +1,7 @@
 Hướng dẫn cài đặt saltstack
 =========
 
-- 1. What's Saltstack? 
+# 1. What's Saltstack? 
 Saltstack là 1 phần mềm quản lý cấu hình. Nói đơn giản là 1 phần mềm giúp bạn chỉnh sửa file cấu hình trên 1 máy và áp dụng file cấu hình này trên hàng loạt máy. Ngoài quản lý cấu hình thì saltstack còn quản lý cron/file/folders/service... rất nhiều thứ hay ho.
 
 - 2. Why's Saltstack?
