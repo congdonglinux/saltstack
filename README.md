@@ -107,6 +107,7 @@ Rejected Keys:
 ```
 
 Key này được Master sử dụng để chứng thực các minion (còn có sử dụng để mã hóa dữ liệu qua lại giữa 2 thằng này ko thì ko sure lắm)
+
 Kết quả trên có thể hiểu như thế này: Mới có 2 thằng Minion gởi key lên và đang chờ accept, bây giờ mày có muốn accept hay ko? Ờ, Accept thôi
 ```shell
 salt-key -A
