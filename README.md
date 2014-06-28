@@ -17,8 +17,8 @@ Cá nhân mình đã thử tìm hiểu qua puppet và saltstack, và cuối cùn
 - Còn nhiều nữa mà mình chưa nghĩ ra, khi nào nghĩ ra mình cập nhật sau vậy ;))
 
 # 3. Thành phần của Saltstack
-- Salt Master: quản lý cấu hình. Bạn chỉnh sửa cấu hình trên này (1 lần duy nhất), chính Salt Master sẽ 'ra lệnh' cho các server làm việc ^^
-- Salt Minion: 'nhận lệnh' từ Salt Master và thực thi 'lệnh' dựa vào cấu hình tương ứng.
+- **Salt Master:** quản lý cấu hình. Bạn chỉnh sửa cấu hình trên này (1 lần duy nhất), chính Salt Master sẽ 'ra lệnh' cho các server làm việc ^^
+- **Salt Minion:** 'nhận lệnh' từ Salt Master và thực thi 'lệnh' dựa vào cấu hình tương ứng.
 
 j/k: Thường thì người ta hay đặt master và slave. Tác giả viết nên cái này chắc cũng ghiền phim Despicable Me nên đặt là minion  :v
 
@@ -92,11 +92,11 @@ master: 10.20.0.100
 ```
 ### 4.3 Kiểm tra quá trình cài đặt
 ----------------
-**Trên Master**
+* **Trên Master**
 ```shell
 salt-key -L
 ```
-**Nếu thấy kết quả như vầy thì minion đã gởi public key tới cho Master**
+- **Nếu thấy kết quả như vầy thì minion đã gởi public key tới cho Master**
 ```shell
 Accepted Keys:
 Unaccepted Keys:
@@ -112,7 +112,7 @@ salt-key -A
 ```
 *(Nó có hỏi gì thì chọn Y hết nha bà con)*
 
-**Kiểm tra lại phát**
+- **Kiểm tra lại phát**
 ```shell
 salt-key -L
 ```
@@ -124,7 +124,7 @@ Unaccepted Keys:
 Rejected Keys:
 ```
 
-**Kiểm tra xem Master mà Minion đã 'thông' chưa**
+- **Kiểm tra xem Master mà Minion đã 'thông' chưa**
 
 *Trên master gõ lệnh*
 ```shell
@@ -136,7 +136,7 @@ minion2:
 minion1:
     True
 ```
-**Lấy thông tin về 'Dòng họ' OS các minion đang xài**
+- **Lấy thông tin về 'Dòng họ' OS các minion đang xài**
 ```shell
 salt '*' grains.item os_family
 ```
