@@ -1,7 +1,5 @@
-saltstack
-=========
-
 Hướng dẫn cài đặt saltstack
+=========
 
 Saltstack là gì?
 
