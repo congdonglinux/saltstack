@@ -37,10 +37,10 @@ eth1    | Internet Access (để tải gói về cài đặt)
 OS      | Ubuntu 14.04 amd64
 
 Server 2:
-Hostname: minion1
-eth0: 10.20.0.150
-eth1: Internet Access
-OS: Ubuntu 12.04 amd64
+**Hostname**	| minion1
+**eth0**			| 10.20.0.150
+**eth1**			| Internet Access
+**OS**				| Ubuntu 12.04 amd64
 
 Server 3:
 Hostname: minion2
