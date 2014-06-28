@@ -91,7 +91,7 @@ master: 10.20.0.100
 ```shell
 /etc/init.d/salt-minion restart
 ```
-### 4.3 Kiểm tra quá trình cài đặt
+### 4.4 Kiểm tra quá trình cài đặt
 ----------------
 * **Trên Master**
 ```shell
