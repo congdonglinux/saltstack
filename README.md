@@ -69,8 +69,7 @@ file_roots:
 ```base 
 /etc/init.d/salt-master restart
 ```
-
-* Cài đặt Salt Minion
+### 4.2 Cài đặt Salt Minion
 **Minion 1**
 ```shell
 apt-get install salt-minion -y
@@ -81,7 +80,7 @@ rpm -Uvh http://ftp.linux.ncsu.edu/pub/epel/6/i386/epel-release-6-8.noarch.rpm
 yum install salt-minion -y
 ```
 
-* Cấu hình: **/etc/salt/minion**
+* Cấu hình Minion: **/etc/salt/minion**
 ```shell
 # Chỉ cho minion biết phải đi đâu để nhận 'nhiệm vụ' 
 master: 10.20.0.100
