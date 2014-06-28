@@ -20,7 +20,7 @@ Cá nhân mình đã thử tìm hiểu qua puppet và saltstack, và cuối cùn
 - **Salt Master:** quản lý cấu hình. Bạn chỉnh sửa cấu hình trên này (1 lần duy nhất), chính Salt Master sẽ 'ra lệnh' cho các server làm việc ^^
 - **Salt Minion:** 'nhận lệnh' từ Salt Master và thực thi 'lệnh' dựa vào cấu hình tương ứng.
 
-j/k: Thường thì người ta hay đặt master và slave. Tác giả viết nên cái này chắc cũng ghiền phim Despicable Me nên đặt là minion  :v
+**j/k:** Thường thì người ta hay đặt master và slave. Tác giả viết nên cái này chắc cũng ghiền phim Despicable Me nên đặt là minion  :v
 
 # 4. Các bước cài đặt ?
 ### 4.1 Mô hình LAB
